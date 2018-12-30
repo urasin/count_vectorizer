@@ -1,4 +1,26 @@
+
+# sklearnのCountVectorizerの使い方
 - https://www.haya-programming.com/entry/2018/02/25/044525
+
+```
+## 出現頻度の近すぎる・高すぎる単語を消す
+　全文章中に1回,2回しか出てこない単語、いらないですよね。逆に、全文章にまんべんなく
+出現する単語もいらない気がします。
+
+　CountVectorizerにはmin_df, max_dfというパラメーターがあります。dfはDocument Frequency,
+のことで、tf-idfのあれです。要するに(何回出てくるかはおいといて)全文書中の何％にその単語が出現
+するかの指標です。それを使って特徴をフィルタリングできます。
+
+  今回は8文章なので、うっかり変な数字を指定すると全く効果がなかったり、なにも残らなかったりするのが
+難しいところです。とりあえずは出現する文章が2文章以上、6文章以下くらいの特徴をとってみます。
+min_df=2/8=0.25, max_df=6/8=0.75とすれば良さそうですが、比較がgreater | less than or equal
+なのか単にgreater | less than なのかよくわからないので、安全をみてmin_df=0.24, max_df=0.76と
+しておきます。
+
+## stop wordの除去
+ byとかforとかthatとか要らないですよね。stop_wordsというパラメーターがあり、「こんなのいらないよ」と
+ 単語のりすとをわたすと除去してくます。また、もじ'english'渡すこともでき、その場合は「built-in stop list for English」を使ってくれます
+```
 
 ## csr_matrix
 - http://hamukazu.com/2014/12/03/internal-data-structure-scipy-sparse/

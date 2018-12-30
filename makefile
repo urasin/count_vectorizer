@@ -1,6 +1,6 @@
 run:
-	# docker-compose run python python main.py
-	docker-compose run python python study_sparse_matrix.py
+	docker-compose run python python main.py
+	# docker-compose run python python study_sparse_matrix.py
 bash:
 	docker-compose run python bash
 build:
